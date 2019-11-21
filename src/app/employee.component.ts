@@ -64,6 +64,9 @@ export class EmployeeComponent implements OnInit {
   onDelete(E: EmpClass) {
     this.dataSource = JSON.parse(localStorage.getItem("Employee")).filter(data => data.Emp_Email !== E.Emp_Email);
     localStorage.setItem("Employee", JSON.stringify(this.dataSource));
+    let snackBarRef = this.snackBar.open('Record Deleted.', 'OK', {
+          duration: 2000
+    });
   }
 
 }
