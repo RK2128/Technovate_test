@@ -1,0 +1,106 @@
+<p>insert-employee works!</p>
+<div style="width:100%;text-align: center;">
+    <form class="example-form" [formGroup]="myForm">
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <!-- First name -->
+          <td>
+            <mat-form-field class="example-full-width">
+              <input formControlName="fname" matInput placeholder="First name" />
+              <mat-error *ngIf="myForm.get('fname').hasError('pattern')">
+                First name should not contain any numbers.
+              </mat-error>
+              <mat-error *ngIf="myForm.get('fname').hasError('required')">
+                First name can not be Empty.
+              </mat-error>
+            </mat-form-field>
+          </td>
+          <!-- Last name -->
+          <td>
+            <mat-form-field class="example-full-width">
+              <input formControlName="lname" matInput placeholder="Last Name" />
+              <mat-error *ngIf="myForm.get('lname').hasError('pattern')">
+                Last name should not contain any numbers.
+              </mat-error>
+              <mat-error *ngIf="myForm.get('lname').hasError('required')">
+                Last name can not be Empty.
+              </mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+
+      <p>
+        <!-- Email -->
+        <mat-form-field class="example-full-width">
+          <input matInput placeholder="Email" formControlName="email" />
+
+          <mat-error *ngIf="myForm.get('email').hasError('email')">
+            Please enter a valid Email
+          </mat-error>
+          <mat-error *ngIf="myForm.get('email').hasError('required')">
+            Email can not be empty.
+          </mat-error>
+        </mat-form-field>
+      </p>
+
+      <table class="example-full-width" cellspacing="0">
+        <tr>
+          <!-- Phone -->
+          <td>
+            <mat-form-field class="example-full-width">
+              <span matPrefix>+91 &nbsp;</span>
+              <input
+                type="tel"
+                matInput
+                placeholder="Phone No."
+                formControlName="phone"
+              />
+              <mat-error
+                *ngIf="
+                  myForm.get('phone').hasError('minlength') ||
+                  myForm.get('phone').hasError('maxlength')
+                "
+              >
+                Phone No. should be of 10 digit
+              </mat-error>
+              <mat-error *ngIf="myForm.get('phone').hasError('required')">
+                Phone No. is required.
+              </mat-error>
+              <mat-error *ngIf="myForm.get('phone').hasError('pattern')">
+                Please enter Valid Phone No.
+              </mat-error>
+            </mat-form-field>
+          </td>
+          <!-- Date -->
+          <td>
+            <mat-form-field>
+              <input
+                matInput
+                [matDatepicker]="picker"
+                placeholder="Date of Birth"
+                formControlName="date"
+              />
+              <mat-datepicker-toggle
+                matSuffix
+                [for]="picker"
+              ></mat-datepicker-toggle>
+              <mat-datepicker #picker></mat-datepicker>
+              <mat-error *ngIf="myForm.get('date').hasError('required')">
+                Date of Birth is required.
+              </mat-error>
+            </mat-form-field>
+          </td>
+        </tr>
+      </table>
+
+      <div class="example-button-row">
+        <button mat-raised-button color="primary" (click)="onInsert()" [disabled]="myForm.invalid">
+          Insert
+        </button>&nbsp;&nbsp;&nbsp;&nbsp;
+        <button mat-raised-button color="warn" (click)="onClose()">
+          Close
+        </button>
+      </div>
+    </form>
+    </div>

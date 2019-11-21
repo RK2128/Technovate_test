@@ -1,0 +1,40 @@
+.example-container {
+  display: flex;
+ flex-direction: column;
+}
+
+.example-header {
+ min-height: 64px;
+ padding: 8px 24px 0;
+}
+
+
+table {
+ width:98%;
+}
+
+.mat-form-field {
+ font-size: 14px;
+ width: 100%;
+}
+
+mat-header-cell,mat-sort-header-sorted {
+ font-size:13px;
+ color:darkslategray;
+ font-weight:bold;
+}
+mat-cell{
+ text-align: left;
+ font-size:13px;
+}
+.example-button-row button,
+.example-button-row a {
+  margin-right: 8px;
+}
+
+th{
+  color:white;
+  font-size:20px;
+  text-shadow: 1px 1px black;
+  background-color:rgba(56, 56, 56, 0.664);
+}
