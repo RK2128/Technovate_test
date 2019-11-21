@@ -1,7 +1,5 @@
 import { Component, OnInit, ViewChild } from '@angular/core';
 import { EmpClass } from './emp-class';
-import { MatPaginator } from '@angular/material/paginator';
-import { MatSort } from '@angular/material/sort';
 import { MatTableDataSource } from '@angular/material/table';
 import { MatDialog, MatSnackBar } from '@angular/material';
 import { UpdateEmployeeComponent } from './update-employee/update-employee.component';
@@ -14,9 +12,6 @@ import { InsertEmployeeComponent } from './insert-employee/insert-employee.compo
 })
 
 export class EmployeeComponent implements OnInit {
-  @ViewChild(MatPaginator, { static: true }) paginator: MatPaginator;
-  @ViewChild(MatSort, { static: true }) sort: MatSort;
-
 
   displayedColumns: string[] = ["Emp_fname", "Emp_lname", "Emp_DOB", "Emp_Email", "Emp_phone", "Action"];
   dataSource: any;
@@ -30,8 +25,6 @@ export class EmployeeComponent implements OnInit {
   ngOnInit() {
     this.dataSource = new MatTableDataSource<EmpClass>(JSON.parse(localStorage.getItem("Employee")));
     this.E1 = this.dataSource;
-    this.dataSource.sort = this.sort;
-    this.dataSource.paginator = this.paginator;
   }
 
   onUpdate(E: EmpClass) {
